@@ -18,6 +18,7 @@
   "homepage": "https://github.com/bash/donut#readme",
   "devDependencies": {
     "autoprefixer": "^6.1.0",
+    "csswring": "^4.0.0",
     "postcss-cli": "^2.3.2",
     "postcss-discard-comments": "^2.0.2",
     "postcss-import": "^7.1.3",
