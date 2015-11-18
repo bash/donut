@@ -9,3 +9,8 @@
   background: none;
   border: none;
 }
+
+body {
+  /* Set initial box sizing */
+  box-sizing: border-box;
+}

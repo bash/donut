@@ -10,4 +10,4 @@ all: build/style.css
 
 build/style.css: $(shell find css -name "*.css")
 	mkdir -p $(dir $@)
-	postcss -u postcss-selector-matches -u postcss-import -u postcss-simple-vars -u autoprefixer css/style.css -o $@
+	postcss -u postcss-selector-matches -u postcss-import -u postcss-simple-vars -u autoprefixer -u postcss-discard-comments css/style.css -o $@
