@@ -6,8 +6,7 @@ PATH  := ./node_modules/.bin:$(PATH)
 
 .PHONY: all
 
-all: build/style.css
+all: css/style.min.css
 
-build/style.css: $(shell find css -name "*.css")
-	mkdir -p $(dir $@)
+css/style.min.css: $(shell find css -name "*.css" ! -iname "style.min.css")
 	postcss -u postcss-selector-matches -u postcss-import -u postcss-simple-vars -u autoprefixer -u postcss-discard-comments -u csswring css/style.css -o $@
