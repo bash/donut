@@ -4,12 +4,18 @@
 SHELL := /bin/bash
 PATH  := ./node_modules/.bin:$(PATH)
 
+BUNDLE := css/style.css js/main.min.js
+
 .PHONY: all
 
-all: css/style.min.css js/main.min.js
+all: $(BUNDLE)
 
-css/style.min.css: $(shell find css -name "*.css" ! -iname "style.min.css")
-	postcss -u postcss-selector-matches -u postcss-import -u postcss-simple-vars -u autoprefixer -u postcss-discard-comments -u csswring css/style.css -o $@
+clean:
+	rm -rf $(BUNDLE)
+
+css/style.css: $(shell find less -name "*.less")
+	mkdir -p $(dir $@)
+	lessc -clean-css less/style.less | postcss -u autoprefixer -o $@
 
 js/main.min.js: $(shell find js -name "*.js" ! -iname "main.min.js")
 	browserify -t babelify js/main.js -o | uglifyjs -o $@
