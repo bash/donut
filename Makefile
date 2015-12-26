@@ -5,6 +5,7 @@ SHELL := /bin/bash
 PATH  := ./node_modules/.bin:$(PATH)
 
 BUNDLE := css/style.css js/main.js
+LESS_FILES := $(shell find less -name "*.less")
 
 .PHONY: all clean lint
 
@@ -15,8 +16,9 @@ clean:
 
 lint:
 	jshint js/src
+	lessc --lint less/style.less
 
-css/style.css: $(shell find less -name "*.less")
+css/style.css: $(LESS_FILES)
 	mkdir -p $(dir $@)
 	lessc -clean-css less/style.less | postcss -u autoprefixer -o $@
 

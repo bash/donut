@@ -1,4 +1,3 @@
-# vi:syntax=json
 {
   "esnext": true,
   "curly": true,
