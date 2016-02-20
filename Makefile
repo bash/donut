@@ -15,7 +15,7 @@ clean:
 	rm -rf $(BUNDLE)
 
 lint:
-	jshint js/src
+	standard js/src/**/*.js
 	lessc --lint less/style.less
 
 css/style.css: $(LESS_FILES)

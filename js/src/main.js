@@ -1,5 +1,5 @@
 /**
- * (c) Ruben Schmidmeister
+ * (c) 2016 Ruben Schmidmeister <ruby@fog.im>
  */
 
-console.log('hello world');
+console.log('hello world')
