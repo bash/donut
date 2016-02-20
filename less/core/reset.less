@@ -1,8 +1,10 @@
 /**
- * (c) 2015 Ruben Schmidmeister <ruby@fog.im>
+ * (c) 2016 Ruben Schmidmeister <ruby@fog.im>
  */
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
   margin: 0;
   padding: 0;
@@ -14,7 +16,19 @@
   border: none;
 }
 
-body {
-  // Set initial box sizing
+html {
+  // Set default box sizing
   box-sizing: border-box;
+}
+
+ul, ol {
+  list-style-type: none;
+}
+
+*:-moz-focusring {
+  outline: none;
+}
+
+*:focus {
+  outline: none;
 }
