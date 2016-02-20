@@ -6,6 +6,7 @@ PATH  := ./node_modules/.bin:$(PATH)
 
 BUNDLE := css/style.css js/main.js
 LESS_FILES := $(shell find less -name "*.less")
+JS_FILES := $(shell find js/src -name "*.js")
 
 .PHONY: all clean lint
 
@@ -22,5 +23,5 @@ css/style.css: $(LESS_FILES)
 	mkdir -p $(dir $@)
 	lessc -clean-css less/style.less | postcss -u autoprefixer -o $@
 
-js/main.js: $(shell find js/src -name "*.js")
+js/main.js: $(JS_FILES)
 	browserify -t babelify js/src/main.js -o | uglifyjs -o $@
