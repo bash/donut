@@ -1,8 +1,12 @@
+#
+# (c) 2015 Ruben Schmidmeister <ruby@fog.im>
+#
 SHELL := /bin/bash
 PATH  := ./node_modules/.bin:$(PATH)
 
-BUNDLE := build/index.js build/index.min.js
-JS_FILES := $(shell find lib -name "*.js")
+BUNDLE := css/style.css js/main.js
+LESS_FILES := $(shell find less -name "*.less")
+JS_FILES := $(shell find js/src -name "*.js")
 
 .PHONY: all clean lint
 
@@ -12,12 +16,12 @@ clean:
 	rm -rf $(BUNDLE)
 
 lint:
-	standard lib/**/*.js
+	standard js/src/**/*.js
+	lessc --lint less/style.less
 
-build/index.js: $(JS_FILES)
+css/style.css: $(LESS_FILES)
 	mkdir -p $(dir $@)
-	browserify -t babelify lib/index.js -o $@
+	lessc -clean-css less/style.less | postcss -u autoprefixer -o $@
 
-build/index.min.js: build/index.js
-	mkdir -p $(dir $@)
-	uglifyjs $< -o $@
+js/main.js: $(JS_FILES)
+	browserify -t babelify js/src/main.js -o | uglifyjs -o $@
