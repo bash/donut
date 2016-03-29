@@ -4,9 +4,10 @@
 SHELL := /bin/bash
 PATH  := ./node_modules/.bin:$(PATH)
 
-BUNDLE := build/css/style.css build/js/main.js
+BUNDLE := build/css/style.css build/js/main.js build/js/polyfills.js
 LESS_FILES := $(shell find less -name "*.less")
-JS_FILES := $(shell find js -name "*.js")
+JS_FILES := $(wildcard polyfills/*.js)
+POLYFILL_FILES := $(shell find polyfills -name "*.js")
 
 .PHONY: all clean lint
 
@@ -26,3 +27,8 @@ build/css/style.css: $(LESS_FILES)
 build/js/main.js: $(JS_FILES)
 	mkdir -p $(dir $@)
 	browserify -t babelify js/main.js -o | uglifyjs -o $@
+
+build/js/polyfills.js: $(POLYFILL_FILES)
+	mkdir -p $(dir $@)
+	uglifyjs $+ -o $@
+
