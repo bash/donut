@@ -9,12 +9,15 @@ LESS_FILES := $(shell find less -name "*.less")
 JS_FILES := $(wildcard polyfills/*.js)
 POLYFILL_FILES := $(shell find polyfills -name "*.js")
 
-.PHONY: all clean lint
+.PHONY: all clean lint install-deps
 
 all: $(BUNDLE)
 
 clean:
 	rm -rf build/
+
+install-deps:
+	npm install
 
 lint:
 	standard js/**/*.js
