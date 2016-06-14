@@ -1,12 +1,10 @@
-#
-# (c) 2015 Ruben Schmidmeister <ruby@fog.im>
-#
 SHELL := /bin/bash
 PATH  := ./node_modules/.bin:$(PATH)
 
 BUNDLE := build/css/style.css build/js/main.js build/js/polyfills.js
+
 LESS_FILES := $(shell find less -name "*.less")
-JS_FILES := $(wildcard polyfills/*.js)
+JS_FILES := $(wildcard js/*.js)
 POLYFILL_FILES := $(shell find polyfills -name "*.js")
 
 .PHONY: all clean lint install-deps
