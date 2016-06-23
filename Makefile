@@ -22,14 +22,14 @@ lint:
 	lessc --lint less/style.less
 
 build/css/style.css: $(LESS_FILES)
-	mkdir -p $(dir $@)
+	@mkdir -p $(@D)
 	lessc -clean-css less/style.less | postcss -u autoprefixer -o $@
 
 build/js/main.js: $(JS_FILES)
-	mkdir -p $(dir $@)
+	@mkdir -p $(@D)
 	browserify -t babelify js/main.js -o | uglifyjs -o $@
 
 build/js/polyfills.js: $(POLYFILL_FILES)
-	mkdir -p $(dir $@)
+	@mkdir -p $(@D)
 	uglifyjs $+ -o $@
 
