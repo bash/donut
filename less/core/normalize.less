@@ -12,8 +12,10 @@ html {
   display: none !important;
 }
 
-fieldset {
-  // in webkit browsers this defaults to -webkit-min-content
+fieldset,
+img {
+  // in webkit browsers this defaults to -webkit-min-content for fieldsets
+  // ... and for some reason the safari technology preview needs this for images
   min-width: 0;
 }
 
