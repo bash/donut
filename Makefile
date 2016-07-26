@@ -5,7 +5,10 @@ PROJECT_NAME := donut
 
 LESS_FILES := $(shell find less -name "*.less")
 JS_FILES := $(wildcard js/*.js)
-POLYFILL_FILES := $(shell find polyfills -name "*.js")
+
+# List of polyfills to include (sorted manually)
+POLYFILLS := polyfills/fetch.js \
+             polyfills/webcomponents.js
 
 ROLLUP_CONFIG := .rollup.config.js
 
