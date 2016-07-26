@@ -26,7 +26,11 @@ lint:
 
 build/css/$(PROJECT_NAME).css: $(LESS_FILES)
 	@mkdir -p $(@D)
+ifeq ($(NODE_ENV), production)
 	lessc -clean-css less/$(PROJECT_NAME).less | postcss -u autoprefixer -o $@
+else
+	lessc less/$(PROJECT_NAME).less | postcss -u autoprefixer -o $@
+endif
 
 build/js/$(PROJECT_NAME).js: $(JS_FILES)
 	@mkdir -p $(@D)
