@@ -14,7 +14,7 @@ all: $(BUNDLE)
 clean:
 	rm -rf build/
 
-install-deps:
+deps:
 	npm install
 
 lint:

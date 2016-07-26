@@ -7,11 +7,15 @@ frontend boilerplate featuring make, es6 and less
 
 ## Install Dependencies
 ```bash
-make install-deps
+make deps
 ```
 
 ## Building
-
 ```bash
 make
+```
+
+## Cleanup built files
+```bash
+make clean
 ```
