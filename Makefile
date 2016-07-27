@@ -7,8 +7,10 @@ LESS_FILES := $(shell find less -name "*.less")
 JS_FILES := $(wildcard js/*.js)
 
 # List of polyfills to include (sorted manually)
-POLYFILLS := polyfills/fetch.js \
-             polyfills/webcomponents.js
+POLYFILLS := polyfills/MutationObserver.js \
+			 polyfills/harmony-collections.js \
+             polyfills/fetch.js \
+             polyfills/CustomElementsV1.js
 
 ROLLUP_CONFIG := .rollup.config.js
 
@@ -39,7 +41,7 @@ build/js/$(PROJECT_NAME).js: $(JS_FILES)
 	@mkdir -p $(@D)
 	rollup -c $(ROLLUP_CONFIG) -o $@ js/$(PROJECT_NAME).js
 
-build/js/polyfills.js: $(POLYFILL_FILES)
+build/js/polyfills.js: $(POLYFILLS)
 	@mkdir -p $(@D)
 	uglifyjs $+ -o $@
 
