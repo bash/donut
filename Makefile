@@ -4,7 +4,7 @@ PATH  := ./node_modules/.bin:$(PATH)
 PROJECT_NAME := donut
 
 LESS_FILES := $(shell find less -name "*.less")
-JS_FILES := $(wildcard js/*.js)
+JS_FILES := $(shell find js -name "*.js")
 
 # List of polyfills to include (sorted manually)
 POLYFILLS := polyfills/MutationObserver.js \
