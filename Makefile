@@ -32,7 +32,7 @@ lint:
 build/css/$(PROJECT_NAME).css: $(LESS_FILES)
 	@mkdir -p $(@D)
 ifeq ($(NODE_ENV), production)
-	lessc -clean-css less/$(PROJECT_NAME).less | postcss -u autoprefixer -o $@
+	lessc less/$(PROJECT_NAME).less | postcss -u autoprefixer -u cssnano -o $@
 else
 	lessc less/$(PROJECT_NAME).less | postcss -u autoprefixer -o $@
 endif
