@@ -10,7 +10,7 @@ JS_FILES := $(shell find js -name "*.js")
 POLYFILLS := polyfills/MutationObserver.js \
 			 polyfills/harmony-collections.js \
              polyfills/fetch.js \
-             polyfills/CustomElementsV1.js
+             polyfills/custom-elements.js
 
 ROLLUP_CONFIG := .rollup.config.js
 
