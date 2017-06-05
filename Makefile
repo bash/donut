@@ -27,7 +27,7 @@ deps:
 
 lint:
 	standard js/**/*.js
-	lessc --lint less/style.less
+	lessc --lint less/$(PROJECT_NAME).less
 
 build/css/$(PROJECT_NAME).css: $(LESS_FILES)
 	@mkdir -p $(@D)

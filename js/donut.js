@@ -6,8 +6,8 @@ import { HelloWorld } from './elements/hello-world'
 
 const url = 'https://httpbin.org/get'
 
-fetch(url)
+window.fetch(url)
   .then((resp) => resp.json())
   .then((data) => console.log(data))
 
-customElements.define('hello-world', HelloWorld)
+window.customElements.define('hello-world', HelloWorld)
