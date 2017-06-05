@@ -7,10 +7,7 @@ LESS_FILES := $(shell find less -name "*.less")
 JS_FILES := $(shell find js -name "*.js")
 
 # List of polyfills to include (sorted manually)
-POLYFILLS := polyfills/MutationObserver.js \
-			 polyfills/harmony-collections.js \
-             polyfills/fetch.js \
-             polyfills/custom-elements.js
+POLYFILLS := polyfills/fetch.js
 
 ROLLUP_CONFIG := .rollup.config.js
 

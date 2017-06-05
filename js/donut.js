@@ -1,13 +1,13 @@
-/**
- * (c) 2016 Ruben Schmidmeister
- */
+import { render } from 'preact'
 
-import { HelloWorld } from './elements/hello-world'
+const URL = 'https://httpbin.org/get'
 
-const url = 'https://httpbin.org/get'
+const Title = ({ children }) => {
+  return <h1>{children}</h1>
+}
 
-window.fetch(url)
+window.fetch(URL)
   .then((resp) => resp.json())
   .then((data) => console.log(data))
 
-window.customElements.define('hello-world', HelloWorld)
+render(<Title>Hello from Preact</Title>, document.body)
