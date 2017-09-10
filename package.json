@@ -1,10 +1,19 @@
 {
-  "name": "donut",
+  "name": "@rschmidmeister/donut",
   "version": "1.0.0",
   "description": "A simple boilerplate for frontend projects",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prebuild:js": "mkdir -p build/js",
+    "build:js": "rollup -c .rollup.config.js -o build/js/app.js js/app.js",
+    "prebuild:polyfills": "mkdir -p build/js",
+    "build:polyfills": "uglifyjs polyfills/fetch.js > build/js/polyfills.js",
+    "prebuild:css": "mkdir -p build/css",
+    "build:css": "node ./scripts/build-styles.js less/app.less > build/css/app.css",
+    "build": "npm run build:css && npm run build:js && npm run build:polyfills",
+    "clean": "rm -rf build/",
+    "lint": "standard 'js/**/*.js' && lessc --lint less/app.less"
   },
   "repository": {
     "type": "git",
@@ -27,7 +36,8 @@
     "cssnano": "^3.7.3",
     "harmony-collections": "^0.3.8",
     "less": "^2.5.3",
-    "postcss-cli": "^2.3.2",
+    "postcss": "^6.0.11",
+    "postcss-selector-matches": "^3.0.1",
     "rollup": "^0.42.0",
     "rollup-plugin-babel": "^2.7.1",
     "rollup-plugin-node-resolve": "^3.0.0",

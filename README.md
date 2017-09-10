@@ -5,14 +5,9 @@
 
 frontend boilerplate featuring make, es6 and less
 
-## Install Dependencies
-```bash
-make deps
-```
-
 ## Building
 ```bash
-make
+npm run build
 ```
 
 ## Building for production
@@ -20,10 +15,10 @@ Setting the environment variable NODE_ENV to production will disable sourcmaps a
 It's generally a good idea to run `make clean` before building for production.
 
 ```bash
-NODE_ENV=production make
+NODE_ENV=production npm run build
 ```
 
 ## Cleanup built files
 ```bash
-make clean
+npm run clean
 ```
